@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mohammad Masrur Hossain — Metrology Engineer at Intel working on advanced packaging, wafer-level defect analysis and yield engineering.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔬</text></svg>">
+<title>Masrur Hossain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#EEF1F3; --surface:#FFFFFF; --ink:#14202B; --muted:#56646F; --rule:#CBD3D9;
+  --accent:#B86E00; --accent-soft:#F6E3C2; --die:#C9D3DA; --die-pass:#8FA7B5; --defect:#C2410C; --wafer-edge:#9AA8B2;
+  --display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0D1318; --surface:#141C23; --ink:#E4E9ED; --muted:#93A1AC; --rule:#2A3640;
+    --accent:#F0B03A; --accent-soft:#3A2C12; --die:#1F2A33; --die-pass:#3E5563; --defect:#FF7A45; --wafer-edge:#4A5A66;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0D1318; --surface:#141C23; --ink:#E4E9ED; --muted:#93A1AC; --rule:#2A3640;
+  --accent:#F0B03A; --accent-soft:#3A2C12; --die:#1F2A33; --die-pass:#3E5563; --defect:#FF7A45; --wafer-edge:#4A5A66;
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:20px}
+a{color:inherit;text-decoration-color:var(--accent);text-underline-offset:3px}
+a:hover{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1080px;margin-inline:auto}
+
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-block:22px;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:12.5px;letter-spacing:.04em}
+nav .mark{font-weight:500}
+nav ul{display:flex;gap:18px;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-block:64px 56px}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--accent)}
+h1{font-family:var(--display);font-stretch:68%;font-weight:760;font-size:clamp(3rem,8vw,5.6rem);line-height:.92;letter-spacing:-.01em;margin:18px 0 22px;text-transform:uppercase;text-wrap:balance}
+h1 span{color:var(--accent)}
+.lede{font-size:1.18rem;max-width:34em;margin:0 0 26px;color:var(--ink)}
+.lede em{font-style:normal;background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:13px;letter-spacing:.03em;padding:11px 18px;border:1px solid var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--ink);color:var(--ground)}
+.btn.primary:hover{background:var(--accent);border-color:var(--accent);color:var(--ground)}
+.btn:hover{border-color:var(--accent)}
+.status{margin-top:28px;display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+.dot{width:8px;height:8px;border-radius:50%;background:#2F9E6B;box-shadow:0 0 0 4px color-mix(in srgb,#2F9E6B 22%,transparent)}
+
+.wafer{position:relative;width:100%;max-width:420px;justify-self:end}
+.wafer canvas{width:100%;aspect-ratio:1;display:block}
+.wafer figcaption{display:flex;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:10px;font-variant-numeric:tabular-nums;flex-wrap:wrap}
+.legend{display:flex;gap:14px}
+.legend i{display:inline-block;width:9px;height:9px;margin-right:6px;vertical-align:-1px}
+
+/* stats strip */
+.specs{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--rule)}
+.specs div{padding:20px 18px;border-left:1px solid var(--rule)}
+.specs div:first-child{border-left:0;padding-left:0}
+.specs b{display:block;font-family:var(--display);font-stretch:75%;font-weight:700;font-size:2.1rem;line-height:1;font-variant-numeric:tabular-nums}
+.specs span{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.03em}
+
+/* sections */
+section{padding-block:72px 8px}
+.sec-head{display:grid;grid-template-columns:220px 1fr;gap:32px;margin-bottom:28px;align-items:baseline}
+h2{font-family:var(--display);font-stretch:80%;font-weight:700;font-size:1.9rem;line-height:1.05;margin:0;text-wrap:balance}
+.sec-head p{margin:0;color:var(--muted);max-width:38em}
+.body-grid{display:grid;grid-template-columns:220px 1fr;gap:32px}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+
+/* experience */
+.role{display:grid;grid-template-columns:220px 1fr;gap:32px;padding-block:26px;border-top:1px solid var(--rule)}
+.role .when{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.role .when strong{display:block;color:var(--ink);font-weight:500;margin-bottom:2px}
+.role h3{font-family:var(--body);font-weight:600;font-size:1.15rem;margin:0}
+.role .org{color:var(--muted);margin:2px 0 12px}
+.role ul{margin:0;padding-left:18px;max-width:44em}
+.role li{margin-bottom:6px}
+.role li::marker{color:var(--accent)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tag{font-family:var(--mono);font-size:11.5px;padding:3px 8px;border:1px solid var(--rule);color:var(--muted)}
+.role.current{background:var(--surface);border-top:2px solid var(--accent);padding-inline:20px;margin-inline:-20px}
+.early{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--rule)}
+.early div{padding:18px 18px 18px 0}
+.early h4{margin:4px 0 2px;font-size:1rem;font-weight:600}
+.early p{margin:0;color:var(--muted);font-size:.93rem}
+
+/* publications */
+.pubs{list-style:none;margin:0;padding:0;counter-reset:p}
+.pub{display:grid;grid-template-columns:220px 1fr;gap:32px;padding-block:22px;border-top:1px solid var(--rule)}
+.pub .venue{font-family:var(--mono);font-size:13px;color:var(--muted)}
+.pub .venue strong{display:block;color:var(--accent);font-weight:500}
+.pub h3{font-weight:500;font-size:1.08rem;line-height:1.4;margin:0 0 6px;max-width:40em}
+.pub a.doi{font-family:var(--mono);font-size:12.5px;color:var(--muted)}
+
+/* projects */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.card{background:var(--surface);padding:22px}
+.card .label{display:block;margin-bottom:8px}
+.card h3{font-size:1.02rem;font-weight:600;margin:0 0 8px;line-height:1.35}
+.card p{margin:0;color:var(--muted);font-size:.93rem}
+
+/* education */
+.edu{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.edu div{border-top:2px solid var(--ink);padding-top:14px}
+.edu div:first-child{border-top-color:var(--accent)}
+.edu h3{font-family:var(--display);font-stretch:85%;font-size:1.3rem;margin:6px 0 4px;line-height:1.15}
+.edu p{margin:0;color:var(--muted);font-size:.94rem}
+.edu .gpa{font-family:var(--mono);font-size:12.5px;color:var(--ink);margin-top:8px}
+
+/* toolkit */
+.kit{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 40px}
+.kit h3{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:0 0 10px;padding-bottom:8px;border-bottom:1px solid var(--rule)}
+.kit ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 14px}
+.kit li{font-size:.97rem}
+.kit li::after{content:"·";margin-left:14px;color:var(--rule)}
+.kit li:last-child::after{content:""}
+
+.certs{columns:2;column-gap:40px;list-style:none;margin:0;padding:0}
+.certs li{break-inside:avoid;display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px dashed var(--rule);font-size:.95rem}
+.certs span{font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* contact */
+.contact{margin-block:88px 0;padding-block:48px;border-top:2px solid var(--ink);display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:end}
+.contact h2{font-size:clamp(2.2rem,5vw,3.4rem);font-stretch:70%;text-transform:uppercase}
+.contact p{color:var(--muted);max-width:36em}
+footer{padding-block:24px 40px;font-family:var(--mono);font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--rule)}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-block:40px}
+  .wafer{justify-self:start;max-width:320px}
+  .specs{grid-template-columns:repeat(2,1fr)}
+  .specs div:nth-child(3){border-left:0;padding-left:0}
+  .specs div:nth-child(n+3){border-top:1px solid var(--rule)}
+  .sec-head,.role,.pub,.body-grid{grid-template-columns:1fr;gap:10px}
+  .cards,.edu,.early{grid-template-columns:1fr}
+  .kit{grid-template-columns:1fr}
+  .certs{columns:1}
+  .contact{grid-template-columns:1fr}
+  .role.current{padding-inline:16px;margin-inline:-16px}
+}
+@media (max-width:480px){ nav ul{gap:12px} .specs div{padding:16px 12px} }
+</style>
+<style>body{margin:0} img{max-width:100%}</style>
+</head>
+<body>
+
+
+<div class="wrap">
+  <nav aria-label="Sections">
+    <span class="mark">M. MASRUR HOSSAIN</span>
+    <ul>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#toolkit">Toolkit</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <div class="eyebrow">Metrology Engineer · Intel · Hillsboro, OR</div>
+      <h1>Mohammad Masrur <span>Hossain</span></h1>
+      <p class="lede">I build the inspection recipes that catch <em>chipping, warpage, cracks and bonding misalignment</em> on advanced-packaging wafers before they turn into yield loss — and take tools from first-of-a-kind evaluation to stable, repeatable production.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://www.linkedin.com/in/masrur-hossain/" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+        <a class="btn" href="#research">Read the research</a>
+      </div>
+      <div class="status"><span class="dot" aria-hidden="true"></span>Open to process, equipment &amp; metrology/yield roles</div>
+    </div>
+    <figure class="wafer" aria-label="Illustrative wafer map with a darkfield inspection scan">
+      <canvas id="wafer" width="840" height="840"></canvas>
+      <figcaption>
+        <span>Ø 300 mm · BF/DF scan</span>
+        <span class="legend"><span><i style="background:var(--die-pass)"></i>pass</span><span><i style="background:var(--defect)"></i>flag</span></span>
+      </figcaption>
+    </figure>
+  </header>
+
+  <div class="specs" role="list">
+    <div role="listitem"><b>3.5 yrs</b><span>at Intel, R&amp;D → HVM</span></div>
+    <div role="listitem"><b>5+ yrs</b><span>cleanroom &amp; lab work</span></div>
+    <div role="listitem"><b>4</b><span>publications</span></div>
+    <div role="listitem"><b>PhD</b><span>Industrial Eng., in progress</span></div>
+  </div>
+
+  <section id="about">
+    <div class="sec-head">
+      <h2>About</h2>
+      <div>
+        <p style="color:var(--ink);margin-bottom:14px">At Intel I develop and optimize wafer-level metrology recipes — Brightfield and Darkfield optical inspection — across EMIB-T and Hybrid Bonding packaging architectures. I use SPC, DOE and FMEA to judge tool capability, run root cause analysis on excursions, and work with OEM suppliers to keep tools available in 24/7 production.</p>
+        <p>Before packaging, my M.S. research at the University of Washington built a high-throughput synthesis platform for metal-organic frameworks, characterized with XRD, SEM, TEM and TGA. Add simulation work in ANSYS, SOLIDWORKS and EBSILON®, and the result is a process-and-materials skill set that carries beyond semiconductors into manufacturing and energy systems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head">
+      <h2>Experience</h2>
+      <p>From power-plant floors in Dhaka to advanced-packaging lines in Oregon.</p>
+    </div>
+
+    <article class="role current">
+      <div class="when"><strong>May 2024 — Present</strong>Intel · Hillsboro, OR</div>
+      <div>
+        <h3>Metrology Engineer</h3>
+        <p class="org">Intel Corporation · Advanced Packaging</p>
+        <ul>
+          <li>Develop Brightfield (BF) and Darkfield (DF) optical recipes that detect front/backside chipping, warpage, cracking, epoxy height, die-to-die bonding alignment and spacing variation.</li>
+          <li>Led Technology Development wafer-level recipe creation across EMIB-T and Hybrid Bonding, qualifying modules for New Product Introductions with Integration, Automation and HVM teams.</li>
+          <li>Run continuous improvement projects with OEM suppliers to raise tool availability and cut downtime in high-volume production.</li>
+          <li>Design DOE and SPC studies in JMP and Klarity to evaluate tool capability and reduce process excursions.</li>
+          <li>Author SOPs, BKMs and equipment specs for recipe repeatability and tool-to-tool matching across sites.</li>
+        </ul>
+        <div class="tags"><span class="tag">Optical metrology</span><span class="tag">GD&amp;T</span><span class="tag">SPC</span><span class="tag">DOE</span><span class="tag">JMP</span><span class="tag">Klarity</span></div>
+      </div>
+    </article>
+
+    <article class="role">
+      <div class="when"><strong>Apr 2023 — May 2024</strong>Intel · Hillsboro, OR</div>
+      <div>
+        <h3>Microelectronic Packaging R&amp;D Engineer</h3>
+        <p class="org">Intel Corporation · Packaging R&amp;D sustaining</p>
+        <ul>
+          <li>Owned tool availability, recipe stability and throughput across grinding, polishing, taper and de-taper operations.</li>
+          <li>Troubleshot tool alarms at the hardware level with model-based problem solving and SPC trend analysis, protecting die yield.</li>
+          <li>Resolved excursions, data gaps and recipe inconsistencies with equipment, integration and process development teams while keeping 24/7 continuity.</li>
+        </ul>
+        <div class="tags"><span class="tag">Die prep</span><span class="tag">CMP</span><span class="tag">Wafer grinding</span><span class="tag">Root cause analysis</span></div>
+      </div>
+    </article>
+
+    <article class="role">
+      <div class="when"><strong>Sep 2021 — Mar 2023</strong>Seattle, WA</div>
+      <div>
+        <h3>Graduate Research Assistant</h3>
+        <p class="org">Novosselov Research Group · University of Washington</p>
+        <ul>
+          <li>Engineered a sub-second, high-throughput synthesis platform for metal-organic frameworks, combining solution- and vapor-phase delivery to control nucleation and growth.</li>
+          <li>Characterized crystal structure, morphology and thermal stability (XRD, SEM, TEM, TGA) to tie process conditions to material quality.</li>
+          <li>Built scalable synthesis frameworks across MOF systems for gas storage, separation and energy applications.</li>
+        </ul>
+        <div class="tags"><span class="tag">SEM</span><span class="tag">BET</span><span class="tag">XRD</span><span class="tag">TGA</span></div>
+      </div>
+    </article>
+
+    <article class="role">
+      <div class="when"><strong>Jan 2020 — Mar 2021</strong>Dhaka, Bangladesh</div>
+      <div>
+        <h3>Undergraduate Researcher</h3>
+        <p class="org">Islamic University of Technology</p>
+        <ul>
+          <li>Proposed and led two projects published in <i>Energy Conversion and Management: X</i> and <i>Energy and AI</i>.</li>
+          <li>Developed two solar-driven dual-pressure Kalina cycles with zeotropic working fluids in EBSILON® Professional.</li>
+          <li>Worked with the University of Malaya's UMPEDAC on techno-economic studies of waste-to-energy plants in Dhaka; mentored new undergraduate researchers.</li>
+        </ul>
+      </div>
+    </article>
+
+    <div class="early">
+      <div><span class="label">Jul — Dec 2022</span><h4>CubeSat Team, STC member</h4><p>Structures, thermal &amp; configuration work in SOLIDWORKS and Ansys Mechanical · UW A&amp;A</p></div>
+      <div><span class="label">Oct — Dec 2022</span><h4>Graduate Grader, ME 551</h4><p>Elasticity I — graded and gave written feedback for a graduate solid-mechanics course · UW</p></div>
+      <div><span class="label">Nov — Dec 2019</span><h4>Mechanical Engineering Intern</h4><p>Thermal power plant operations and failure root-cause analysis · Bangladesh Power Development Board</p></div>
+      <div><span class="label">Jun 2022 — Mar 2023</span><h4>Fiscal Student Assistant</h4><p>~15 procurement requests a month and audit documentation · UW College of Education</p></div>
+      <div><span class="label">Sep 2021 — Apr 2022</span><h4>Desk Service Representative</h4><p>Trained and onboarded 17 new desk representatives · University of Washington</p></div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="sec-head">
+      <h2>Publications</h2>
+      <p>Materials synthesis, thermodynamic cycles and waste-to-energy systems.</p>
+    </div>
+    <ol class="pubs">
+      <li class="pub">
+        <div class="venue"><strong>2023</strong>ChemRxiv</div>
+        <div><h3>Sub-second HKUST-1 synthesis in a continuous flow supercritical CO₂ reactor</h3>
+        <p style="margin:0 0 6px;color:var(--muted);max-width:44em">~650 ms residence time; best properties at a 150 °C CO₂ injection temperature, with BET surface area near 1,550 m²/g.</p>
+        <a class="doi" href="https://doi.org/10.26434/chemrxiv-2023-zxbfn" target="_blank" rel="noopener">doi:10.26434/chemrxiv-2023-zxbfn ↗</a></div>
+      </li>
+      <li class="pub">
+        <div class="venue"><strong>2022 · First author</strong>Biomass Conversion and Biorefinery · Springer Nature</div>
+        <div><h3>Techno-economic and environment assessment of landfill and sewage treatment plant-based combined power generation system: a case study for Dhaka</h3>
+        <p style="margin:0 0 6px;color:var(--muted);max-width:44em">The combined biogas scenario reaches 21 MW of installed capacity.</p>
+        <a class="doi" href="https://doi.org/10.1007/s13399-022-02422-3" target="_blank" rel="noopener">doi:10.1007/s13399-022-02422-3 ↗</a></div>
+      </li>
+      <li class="pub">
+        <div class="venue"><strong>2021</strong>Energy Conversion and Management: X</div>
+        <div><h3>Analysis and optimization of a modified Kalina cycle system for low-grade heat utilization</h3>
+        <a class="doi" href="https://doi.org/10.1016/j.ecmx.2021.100121" target="_blank" rel="noopener">doi:10.1016/j.ecmx.2021.100121 ↗</a></div>
+      </li>
+      <li class="pub">
+        <div class="venue"><strong>2021</strong>Energy and AI</div>
+        <div><h3>Numerical investigation of a modified Kalina cycle system for high-temperature application and genetic algorithm based optimization of the multi-phase expander's inlet condition</h3>
+        <a class="doi" href="https://doi.org/10.1016/j.egyai.2021.100117" target="_blank" rel="noopener">doi:10.1016/j.egyai.2021.100117 ↗</a></div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head">
+      <h2>Lab projects</h2>
+      <p>Hands-on fabrication and characterization work from graduate coursework and research.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><span class="label">Energy storage · 2021 on</span><h3>Li-ion battery pack fabrication &amp; quality assessment</h3><p>Electrode fabrication, resistance-welded modules, MACCOR cycling, ISO/FDA conformance, and lithium recovery from LiCoO₂ by acid leaching.</p></div>
+      <div class="card"><span class="label">Nanomaterials · Nov 2021</span><h3>CdSe quantum dot optical characterization</h3><p>Synthesized colloidal CdSe QDs and characterized them with UV-Vis, photoluminescence and dynamic light scattering.</p></div>
+      <div class="card"><span class="label">Photovoltaics · Oct–Nov 2021</span><h3>Bulk heterojunction organic PV cells</h3><p>Fabricated BHJ OPVs; derived efficiency from J–V and EQE, then stress-tested under mechanical, thermal and moisture loads.</p></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head">
+      <h2>Education</h2>
+      <p>Mechanical engineering foundations, now extended into industrial engineering.</p>
+    </div>
+    <div class="edu">
+      <div><span class="label">2025 — 2030 · in progress</span><h3>Ph.D., Industrial Engineering</h3><p>University of Tennessee, Knoxville — alongside full-time work at Intel</p></div>
+      <div><span class="label">2021 — 2023</span><h3>M.S., Mechanical Engineering</h3><p>University of Washington · Manufacturing concentration</p><p class="gpa">GPA 3.68 / 4.00</p></div>
+      <div><span class="label">2017 — 2020</span><h3>B.Sc., Mechanical Engineering</h3><p>Islamic University of Technology, Bangladesh</p><p class="gpa">GPA 3.83 / 4.00 · ranked 3rd of 96</p></div>
+    </div>
+  </section>
+
+  <section id="toolkit">
+    <div class="sec-head">
+      <h2>Toolkit</h2>
+      <p>What I use to measure, analyze, model and document.</p>
+    </div>
+    <div class="kit">
+      <div><h3>Metrology &amp; inspection</h3><ul><li>Brightfield / Darkfield optical inspection</li><li>Dimensional metrology</li><li>GD&amp;T</li><li>Calibration</li><li>Precision measuring</li><li>Test &amp; measurement instrumentation</li></ul></div>
+      <div><h3>Process &amp; quality</h3><ul><li>SPC</li><li>DOE</li><li>FMEA</li><li>Root cause analysis</li><li>Six Sigma Green Belt</li><li>CMP</li><li>Wafer grinding</li><li>Die prep</li></ul></div>
+      <div><h3>Data &amp; software</h3><ul><li>JMP</li><li>Klarity</li><li>Python</li><li>MATLAB</li><li>Excel</li><li>Unix</li></ul></div>
+      <div><h3>Modeling &amp; CAD</h3><ul><li>SOLIDWORKS</li><li>CATIA</li><li>AutoCAD</li><li>Ansys Mechanical</li><li>COMSOL</li><li>EBSILON® Professional</li></ul></div>
+      <div><h3>Materials characterization</h3><ul><li>XRD</li><li>SEM</li><li>TEM</li><li>TGA</li><li>BET</li><li>UV-Vis &amp; PL</li></ul></div>
+      <div><h3>Documentation</h3><ul><li>SOPs</li><li>BKMs</li><li>Equipment specifications</li><li>Technical communication</li></ul></div>
+    </div>
+
+    <div class="body-grid" style="margin-top:56px">
+      <h3 class="label" style="margin:0">Certifications</h3>
+      <ul class="certs">
+        <li>Master of Science <span>UW · 2023</span></li>
+        <li>Excel: Statistical Process Control <span>LinkedIn · 2022</span></li>
+        <li>Six Sigma: Green Belt <span>LinkedIn · 2022</span></li>
+        <li>Root Cause Analysis <span>LinkedIn · 2022</span></li>
+        <li>Cert Prep: Certified SOLIDWORKS Professional <span>LinkedIn · 2022</span></li>
+        <li>Cert Prep: Certified SOLIDWORKS Associate <span>LinkedIn · 2022</span></li>
+        <li>Cert Prep: SOLIDWORKS Surfacing <span>LinkedIn · 2022</span></li>
+        <li>Cert Prep: SOLIDWORKS Drawing Tools <span>LinkedIn · 2022</span></li>
+        <li>SOLIDWORKS 2019 Essential Training <span>LinkedIn · 2022</span></li>
+        <li>Programming Foundations: Real-World Examples <span>LinkedIn · 2022</span></li>
+        <li>Learning Python <span>LinkedIn · 2022</span></li>
+        <li>Applied Machine Learning in Python <span>U. Michigan · 2020</span></li>
+        <li>Supply Chain Management <span>Rutgers · 2020</span></li>
+        <li>Business Statistics and Analysis <span>Rice · 2020</span></li>
+        <li>Excel Skills for Business: Intermediate I <span>Macquarie · 2020</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div>
+      <div class="eyebrow">Portland, Oregon metro</div>
+      <h2>Let's talk process, tools &amp; yield.</h2>
+      <p>I'm open to process engineering, equipment engineering and metrology/yield roles in semiconductors, manufacturing and energy.</p>
+    </div>
+    <div class="cta" style="justify-content:flex-start">
+      <a class="btn primary" href="https://www.linkedin.com/in/masrur-hossain/" target="_blank" rel="noopener">Message on LinkedIn ↗</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Mohammad Masrur Hossain</span>
+    <span>linkedin.com/in/masrur-hossain</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const cv=document.getElementById('wafer'); if(!cv) return;
+  const ctx=cv.getContext('2d');
+  const N=26, W=cv.width, C=W/2, R=W/2-18, pitch=(R*2)/N*0.98;
+  // deterministic pseudo-random defect pattern: edge chipping + a scratch-like cluster
+  let seed=7; const rnd=()=>{seed=(seed*16807)%2147483647; return seed/2147483647;};
+  const dies=[];
+  for(let i=0;i<N;i++)for(let j=0;j<N;j++){
+    const x=C-R+ (R*2-pitch*N)/2 + i*pitch, y=C-R+(R*2-pitch*N)/2 + j*pitch;
+    const cx=x+pitch/2, cy=y+pitch/2;
+    const corners=[[x,y],[x+pitch,y],[x,y+pitch],[x+pitch,y+pitch]];
+    if(!corners.every(([a,b])=>Math.hypot(a-C,b-C)<R-6)) continue;
+    const d=Math.hypot(cx-C,cy-C)/R;
+    let flag = (d>0.86 && rnd()<0.22) || (Math.abs((cy-C)-(cx-C)*0.55-60)<pitch*0.6 && cx>C-80 && cx<C+170 && rnd()<0.75) || rnd()<0.025;
+    dies.push({x,y,cx,cy,flag});
+  }
+  const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let scan=W;
+  function draw(){
+    ctx.clearRect(0,0,W,W);
+    ctx.beginPath(); ctx.arc(C,C,R,0,Math.PI*2); ctx.fillStyle=css('--surface'); ctx.fill();
+    ctx.lineWidth=3; ctx.strokeStyle=css('--wafer-edge'); ctx.stroke();
+    // notch
+    ctx.beginPath(); ctx.arc(C,C+R,12,Math.PI,0); ctx.fillStyle=css('--ground'); ctx.fill();
+    const die=css('--die'), pass=css('--die-pass'), def=css('--defect');
+    for(const d of dies){
+      ctx.fillStyle=d.flag?def:pass;
+      ctx.fillRect(d.x+1.5,d.y+1.5,pitch-3,pitch-3);
+    }
+    if(scan<W){
+      ctx.save(); ctx.beginPath(); ctx.arc(C,C,R,0,Math.PI*2); ctx.clip();
+      const g=ctx.createLinearGradient(scan-60,0,scan,0);
+      g.addColorStop(0,'rgba(0,0,0,0)'); g.addColorStop(1,css('--accent'));
+      ctx.fillStyle=g; ctx.globalAlpha=.35; ctx.fillRect(scan-60,0,60,W);
+      ctx.globalAlpha=1; ctx.fillStyle=css('--accent'); ctx.fillRect(scan-2,0,3,W); ctx.restore();
+    }
+    // crosshair ticks
+    ctx.strokeStyle=css('--wafer-edge'); ctx.lineWidth=2;
+    [[C,4,C,14],[C,W-4,C,W-14],[4,C,14,C],[W-4,C,W-14,C]].forEach(([a,b,c,e])=>{ctx.beginPath();ctx.moveTo(a,b);ctx.lineTo(c,e);ctx.stroke();});
+  }
+  function step(){ scan+=W/90; draw(); if(scan<W) requestAnimationFrame(step); }
+  // resting state is the finished scan; animate only when motion is allowed
+  draw(); if(!reduce){ setTimeout(()=>{scan=0; requestAnimationFrame(step);},400); }
+  const redraw=()=>{ if(scan>=W) draw(); };
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',redraw);
+  new MutationObserver(redraw).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+})();
+</script>
+
+</body>
+</html>
