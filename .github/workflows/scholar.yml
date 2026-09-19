@@ -1,0 +1,46 @@
+name: Refresh Scholar citations
+
+# Re-reads the public Google Scholar profile once a week and commits the
+# numbers to scholar.json, which index.html loads for the citation tracker.
+# Can also be run by hand from the Actions tab ("Run workflow").
+
+on:
+  schedule:
+    - cron: "17 6 * * 1"   # Mondays, 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scholar-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install parser
+        run: pip install --quiet beautifulsoup4
+
+      - name: Read the Scholar profile
+        run: python .github/scripts/scholar.py
+
+      - name: Commit if the numbers changed
+        run: |
+          if git diff --quiet -- scholar.json; then
+            echo "scholar.json unchanged - nothing to commit"
+            exit 0
+          fi
+          total=$(python -c "import json; print(json.load(open('scholar.json'))['citations'])")
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scholar.json
+          git commit -m "Refresh Scholar citations (${total} total)"
+          git push
