@@ -1,0 +1,83 @@
+{
+  "updated": "2026-09-19",
+  "source": "https://scholar.google.com/citations?user=sIqKWPgAAAAJ",
+  "citations": 118,
+  "citations_recent": 115,
+  "h_index": 4,
+  "h_index_recent": 4,
+  "i10_index": 2,
+  "i10_index_recent": 2,
+  "per_year": {
+    "2022": 3,
+    "2023": 15,
+    "2024": 24,
+    "2025": 44,
+    "2026": 26
+  },
+  "papers": {
+    "egyai2021": 56,
+    "ecmx2021": 44,
+    "bcb2024": 8,
+    "wen2026": 3,
+    "hkust2023": 2,
+    "go2026": 0,
+    "cnt2026": 0
+  },
+  "all_entries": [
+    {
+      "title": "Numerical Investigation of a modified Kalina cycle system for high-temperature application and genetic algorithm based optimization of the multi-phase expander's inlet condition",
+      "cites": 56,
+      "year": 2021
+    },
+    {
+      "title": "Analysis and optimization of a modified Kalina cycle system for low-grade heat utilization",
+      "cites": 44,
+      "year": 2021
+    },
+    {
+      "title": "Techno-economic and environment assessment of landfill and sewage treatment plant-based combined power generation system: a case study for Dhaka",
+      "cites": 8,
+      "year": 2024
+    },
+    {
+      "title": "Techno-economic Impact of Incineration-Based Waste to Energy Generation Technology in Bangladesh: A Short Review and A Case Study",
+      "cites": 5,
+      "year": 2025
+    },
+    {
+      "title": "Techno-Economic Assessment of Incineration-Based Waste-to-Energy Systems: Global Perspectives and a Case Study of Dhaka, Bangladesh",
+      "cites": 3,
+      "year": 2026
+    },
+    {
+      "title": "Sub-second HKUST-1 Synthesis in Continuous Flow Supercritical CO2 Reactor",
+      "cites": 2,
+      "year": 2023
+    },
+    {
+      "title": "Nano-Composite Synthesis: Harnessing the Potential of Continuous Flow scCO2 Reactor for Sub-Second synthesis of GO@ HKUST-1",
+      "cites": 0,
+      "year": 2026
+    },
+    {
+      "title": "Continuous Flow Synthesis of MWCNT@ HKUST-1 Hybrid Composites in scCO2 Environment: Effects of Injection Temperature on Morphology, Crystallinity, and Porosity",
+      "cites": 0,
+      "year": 2026
+    },
+    {
+      "title": "Sub-second Nanocomposite Synthesis in Continuous Flow Supercritical CO2 Reactor",
+      "cites": 0,
+      "year": 2023
+    },
+    {
+      "title": "Techno-economic and Feasibility Analysis of a Thermo-chemical Waste to Energy Conversion Technology from the Perspective of Dhaka City, Bangladesh",
+      "cites": 0,
+      "year": 2021
+    },
+    {
+      "title": "Energy and AI",
+      "cites": 0,
+      "year": 0
+    }
+  ]
+}

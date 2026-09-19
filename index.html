@@ -13,15 +13,15 @@
 <meta property="og:image" content="https://mohammad-masrur-hossain.github.io/og-image.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%230F5F63'/%3E%3Cpath d='M14 22h36M8 32h48M14 42h36M22 8v48M32 4v56M42 8v48' stroke='white' stroke-opacity='.3' stroke-width='2'/%3E%3Crect x='33' y='23' width='8' height='8' fill='white'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230068B5'/%3E%3Crect x='23' y='9' width='18' height='12' rx='2' fill='white'/%3E%3Crect x='28' y='21' width='8' height='5' fill='white'/%3E%3Cpath d='M28 26h8l8 18H20z' fill='white' fill-opacity='.4'/%3E%3Cellipse cx='32' cy='45' rx='21' ry='8' fill='none' stroke='white' stroke-width='3'/%3E%3Cellipse cx='32' cy='44' rx='5' ry='2' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap">
 <style>
 :root{
   --ground:#FFFFFF; --panel:#F6F7F8; --ink:#1B2127; --muted:#5B6670; --faint:#88929A; --rule:#E4E7EA; --rule-2:#D3D8DC;
-  --accent:#0F5F63; --accent-soft:#E2EFEF; --on-accent:#FFFFFF;
-  --surface:#FFFFFF; --defect:#C84B2F; --cool:#2F6A9C; --grn:#2F7F57; --sun:#C98F00;
+  --accent:#0068B5; --accent-soft:#E3EFF9; --on-accent:#FFFFFF;
+  --surface:#FFFFFF; --defect:#C84B2F; --cool:#0F5F63; --grn:#2F7F57; --sun:#C98F00;
   --serif:"Newsreader","Iowan Old Style","Palatino Linotype",Georgia,serif;
   --sans:"Geist","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
   color-scheme:light;
@@ -29,15 +29,15 @@
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --ground:#0F1316; --panel:#161B1F; --ink:#E3E7EA; --muted:#9BA6AE; --faint:#6F7B84; --rule:#242B31; --rule-2:#303840;
-    --accent:#62C3BE; --accent-soft:#15302F; --on-accent:#081312;
-    --surface:#161B1F; --defect:#FF7A5C; --cool:#71A9DC; --grn:#5CC08A; --sun:#F0C040;
+    --accent:#6DB7F2; --accent-soft:#12283A; --on-accent:#081312;
+    --surface:#161B1F; --defect:#FF7A5C; --cool:#62C3BE; --grn:#5CC08A; --sun:#F0C040;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
   --ground:#0F1316; --panel:#161B1F; --ink:#E3E7EA; --muted:#9BA6AE; --faint:#6F7B84; --rule:#242B31; --rule-2:#303840;
-  --accent:#62C3BE; --accent-soft:#15302F; --on-accent:#081312;
-  --surface:#161B1F; --defect:#FF7A5C; --cool:#71A9DC; --grn:#5CC08A; --sun:#F0C040;
+  --accent:#6DB7F2; --accent-soft:#12283A; --on-accent:#081312;
+  --surface:#161B1F; --defect:#FF7A5C; --cool:#62C3BE; --grn:#5CC08A; --sun:#F0C040;
   color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -56,7 +56,7 @@ p{margin:0}
 /* ---------- sidebar ---------- */
 .side{position:sticky;top:0;max-height:100vh;overflow:auto;padding-block:40px 28px;display:flex;flex-direction:column;gap:20px;scrollbar-width:none}
 .side::-webkit-scrollbar{display:none}
-.mark{width:40px;height:40px;color:var(--accent)}
+.mark{width:48px;height:48px;color:var(--accent)}
 .side h1{font-family:var(--serif);font-weight:500;font-size:2.05rem;line-height:1.08;letter-spacing:-.012em;margin:14px 0 10px;text-wrap:balance}
 .side .title{font-weight:600;font-size:.98rem;line-height:1.4}
 .side .org{color:var(--muted);font-size:.92rem;margin-top:2px}
@@ -137,15 +137,38 @@ h3,h4{margin:0}
 .filter button:hover{color:var(--ink)}
 .filter button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:500}
 .pubs{list-style:none;margin:0;padding:0;counter-reset:pub}
-.pub{display:grid;grid-template-columns:168px minmax(0,1fr);gap:18px;padding-block:14px;border-bottom:1px solid var(--rule)}
-.pub:first-child{padding-top:2px}
-.pub:last-child{border-bottom:0}
+.pub{display:grid;grid-template-columns:168px minmax(0,1fr);gap:18px;padding-block:2px 14px}
+.pub:not([hidden])~.pub:not([hidden]){padding-top:14px;border-top:1px solid var(--rule)}
+.pub[hidden]{display:none}
 .thumb{appearance:none;border:1px solid var(--rule);background:var(--panel);border-radius:8px;padding:6px;cursor:zoom-in;align-self:start;width:100%;display:block}
 .thumb:hover{border-color:var(--rule-2)}
 .thumb .ga-svg{display:block;width:100%;height:auto}
 .pub h3{font-size:.98rem;font-weight:600;line-height:1.4;text-wrap:pretty}
 .pub .authors{font-size:.84rem;color:var(--muted);margin-top:2px}
 .pub .authors b{color:var(--ink);font-weight:600}
+/* citations (Google Scholar) */
+.cites{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:10px 28px;align-items:end;padding:14px 16px 12px;margin:-4px 0 20px;border:1px solid var(--rule);border-radius:10px;background:var(--panel)}
+.cites-stats{display:flex;align-self:start;margin:0;padding:0;list-style:none}
+.cites-stats li{padding:2px 16px 2px 0}
+.cites-stats li+li{padding-left:16px;border-left:1px solid var(--rule-2)}
+.cites-stats b{display:block;font-family:var(--serif);font-weight:500;font-size:1.6rem;line-height:1.05}
+.cites-stats span{display:block;font-size:.76rem;color:var(--muted);margin-top:3px}
+.cites-chart{margin:0;min-width:0}
+.cites-chart figcaption{font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+.cites-chart figcaption small{font-weight:400;letter-spacing:0;text-transform:none;font-size:.72rem;margin-left:6px}
+.cbars{display:flex;gap:6px;align-items:flex-end;height:88px}
+.cbar{flex:1 1 0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-width:0;height:100%}
+.cbar b{font-size:.72rem;font-weight:500;line-height:1;margin-bottom:4px;opacity:0;transition:opacity .12s}
+.cbar.lbl b,.cbar:hover b{opacity:1}
+.cbar i{display:block;flex:none;width:min(100%,22px);height:calc(var(--v)*52px);min-height:2px;background:var(--accent);border-radius:4px 4px 0 0}
+.cbar:hover i{background:color-mix(in srgb,var(--accent) 80%,var(--ink))}
+.cbar span{font-size:.7rem;color:var(--faint);line-height:1;margin-top:6px}
+.cites-foot{grid-column:1/-1;font-size:.76rem;color:var(--faint);margin:0}
+.cites-foot a{color:var(--muted);text-decoration:none}
+.cites-foot a:hover{color:var(--accent)}
+.cites-foot .sep{margin:0 7px;color:var(--rule-2)}
+.venue .cites-tag{display:inline-block;margin-left:6px;padding:0 6px;border-radius:4px;background:var(--accent-soft);color:var(--accent);font-size:.7rem;font-weight:500;letter-spacing:.02em;vertical-align:1px;white-space:nowrap}
+.venue .cites-tag:empty{display:none}
 .venue{font-size:.84rem;margin-top:2px}
 .venue i{font-family:var(--serif);font-size:.95rem}
 .venue .flag{display:inline-block;margin-left:6px;padding:0 6px;border-radius:4px;border:1px solid var(--rule-2);color:var(--muted);font-size:.7rem;letter-spacing:.02em;vertical-align:1px}
@@ -269,6 +292,7 @@ footer a:hover{color:var(--accent)}
   .focus{grid-template-columns:1fr}
   .focus div,.focus div+div{padding:10px 0;border-left:0;border-bottom:1px solid var(--rule)}
   .pub{grid-template-columns:112px minmax(0,1fr);gap:12px}
+  .cites{grid-template-columns:1fr;gap:14px}
   .thumb{padding:3px}
   .facts{grid-template-columns:repeat(2,minmax(0,1fr))}
   .facts div:nth-child(3){border-left:0;padding-left:0}
@@ -297,7 +321,7 @@ footer a:hover{color:var(--accent)}
 <div class="page">
   <aside class="side">
     <div class="intro">
-      <svg class="mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="20" cy="20" r="17"/><path d="M8 13h24M5 20h30M8 27h24M13 7v26M20 3v34M27 7v26" opacity=".4"/><rect x="20.7" y="13.7" width="5.6" height="5.6" fill="currentColor" stroke="none"/><path d="M17 37h6" stroke-width="2.2" stroke="var(--ground)"/></svg>
+      <svg class="mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><defs><clipPath id="mk-w"><ellipse cx="20" cy="30" rx="16" ry="6.5"/></clipPath></defs><path d="M14 3h12v7a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2z"/><path d="M17 12h6v3h-6z"/><path d="M17.4 15h5.2L27 29H13z" fill="currentColor" fill-opacity=".16" stroke="none"/><g clip-path="url(#mk-w)" opacity=".32" stroke-width="1.1"><path d="M8 20v20M12 20v20M16 20v20M20 20v20M24 20v20M28 20v20M32 20v20M2 26.5h36M2 30h36M2 33.5h36"/></g><ellipse cx="20" cy="30" rx="16" ry="6.5"/><ellipse cx="20" cy="29.4" rx="4" ry="1.6" fill="currentColor" stroke="none"/></svg>
       <h1>Mohammad Masrur Hossain</h1>
       <p class="title">Metrology Equipment Development Engineer</p>
       <p class="org">Intel Corporation · Advanced Packaging</p>
@@ -352,12 +376,24 @@ footer a:hover{color:var(--accent)}
 
     <section id="publications">
       <div class="sec-h"><h2>Publications</h2><div class="filter" role="group" aria-label="Filter publications"><button type="button" data-f="all" aria-pressed="true">All (7)</button><button type="button" data-f="materials" aria-pressed="false">Materials (3)</button><button type="button" data-f="energy" aria-pressed="false">Energy (4)</button></div></div>
+      <div class="cites" id="citations">
+        <ul class="cites-stats">
+          <li><b data-k="citations">118</b><span>citations</span></li>
+          <li><b data-k="h_index">4</b><span>h-index</span></li>
+          <li><b data-k="i10_index">2</b><span>i10-index</span></li>
+        </ul>
+        <figure class="cites-chart">
+          <figcaption>Citations per year<small>current year to date</small></figcaption>
+          <div class="cbars" role="img" aria-label="Citations per year: 2022, 3; 2023, 15; 2024, 24; 2025, 44; 2026, 26 so far."><div class="cbar" style="--v:0.068"><b>3</b><i></i><span>2022</span></div><div class="cbar" style="--v:0.341"><b>15</b><i></i><span>2023</span></div><div class="cbar" style="--v:0.545"><b>24</b><i></i><span>2024</span></div><div class="cbar lbl" style="--v:1.000"><b>44</b><i></i><span>2025</span></div><div class="cbar lbl" style="--v:0.591"><b>26</b><i></i><span>2026</span></div></div>
+        </figure>
+        <p class="cites-foot">Source: <a href="https://scholar.google.com/citations?user=sIqKWPgAAAAJ" target="_blank" rel="noopener">Google Scholar ↗</a><span class="sep">·</span>Updated <time datetime="2026-09-19">Sep 19, 2026</time></p>
+      </div>
       <ol class="pubs"><li class="pub" id="wen2026" data-cat="energy" data-meta="Water-Energy Nexus · 2026 · Elsevier · in press">
   <button class="thumb" type="button" data-open aria-label="Enlarge graphical abstract: Techno-economic assessment of incineration-based waste-to-energy systems: global perspectives and a case study of Dhaka, Bangladesh"><svg class="ga-svg" viewBox="0 0 360 240" role="img" aria-label="Municipal solid waste incineration plant: bunker, furnace and boiler, steam turbine exporting 10 MW, with flue-gas cleaning and ash handling" xmlns="http://www.w3.org/2000/svg"><rect class="bx" x="8" y="108" width="34" height="20" rx="2"/><rect class="bx" x="42" y="114" width="14" height="14" rx="2"/><circle class="bx" cx="18" cy="131" r="4"/><circle class="bx" cx="48" cy="131" r="4"/><text class="" x="32" y="150" font-size="9.5" text-anchor="middle">MSW</text><text class="sm" x="32" y="161" font-size="8" text-anchor="middle">Dhaka</text><path class="ln" d="M58,118 L74,118" fill="none" marker-end="url(#aM)"/><rect class="bx" x="76" y="100" width="40" height="34" rx="3"/><text x="96.0" y="120.5" text-anchor="middle" font-size="8.5">Bunker</text><path class="ln" d="M116,118 L130,118" fill="none" marker-end="url(#aM)"/><rect class="bx" x="132" y="70" width="50" height="80" rx="3"/><path class="flame" d="M146,146 q4,-18 11,-24 q-2,10 5,14 q2,-12 8,-16 q2,14 -2,26 z"/><text class="" x="157" y="86" font-size="8.5" text-anchor="middle">Furnace</text><text class="" x="157" y="97" font-size="8.5" text-anchor="middle">+ boiler</text><path class="ln" d="M157,150 L157,176" fill="none" marker-end="url(#aM)"/><text class="sm" x="157" y="188" font-size="8" text-anchor="middle">bottom ash</text><text class="acc-t" x="157" y="200" font-size="8.5" text-anchor="middle">−80 % landfill vol.</text><path class="hot" d="M182,86 L222,86" fill="none" marker-end="url(#aH)"/><text class="hot-t" x="202" y="80" font-size="8" text-anchor="middle">steam</text><path class="bx" d="M224,81.0 L258,72 L258,102 L224,93.0 Z"/><text class="" x="241" y="116" font-size="8.5" text-anchor="middle">Turbine</text><path class="ln" d="M258,86 L272,86" fill="none"/><circle class="bx" cx="282" cy="86" r="10"/><text class="" x="282" y="89.5" font-size="9" text-anchor="middle">G</text><path class="ln" d="M292,86 L310,86" fill="none" marker-end="url(#aM)"/><path class="ln" d="M320,130 L330,50 L340,130 M322,112 L338,112 M324,92 L336,92 M314,64 L346,64" fill="none"/><text class="big" x="330" y="146" font-size="15" text-anchor="middle">10 MW</text><text class="sm" x="330" y="158" font-size="8" text-anchor="middle">to grid</text><path class="ln" d="M182,138 L212,138 L212,160" fill="none" marker-end="url(#aM)"/><rect class="bx" x="186" y="162" width="66" height="30" rx="3"/><text x="219.0" y="176.5" text-anchor="middle" font-size="8.5">Flue-gas</text><text class="sm" x="219.0" y="187.0" text-anchor="middle" font-size="8">cleaning</text><path class="ln" d="M252,177 L266,177" fill="none" marker-end="url(#aM)"/><rect class="bx" x="268" y="150" width="12" height="60"/><text class="sm" x="290" y="184" font-size="8" text-anchor="start">CO₂ avoided</text><text class="grn-t" x="290" y="198" font-size="9.5" text-anchor="start">0.045 Mt/yr</text><text class="big" x="180" y="30" font-size="18" text-anchor="middle">η = 22.5 %</text></svg></button>
   <div>
     <h3>Techno-economic assessment of incineration-based waste-to-energy systems: global perspectives and a case study of Dhaka, Bangladesh</h3>
     <p class="authors"><b>M. M. Hossain</b>, T. Shahriar, M. N. Inan, M. A. Habib, M. Hasanuzzaman, Mohammad Mehran Hossain</p>
-    <p class="venue"><i>Water-Energy Nexus</i>, 2026 · Elsevier · in press<span class="flag">Open access</span></p>
+    <p class="venue"><i>Water-Energy Nexus</i>, 2026 · Elsevier · in press<span class="flag">Open access</span><span class="cites-tag" data-pub="wen2026">Cited by 3</span></p>
     <p class="kp"><span><b>$4.99 M</b> NPV</span><span><b>11.06 yr</b> payback</span><span><b>$0.1298/kWh</b> LCOE</span></p>
     <p class="pub-links"><button class="textbtn" type="button" data-open>Abstract &amp; figure</button><a href="https://doi.org/10.1016/j.wen.2026.03.002" target="_blank" rel="noopener">DOI ↗</a></p>
   </div>
@@ -376,7 +412,7 @@ footer a:hover{color:var(--accent)}
   <div>
     <h3>Nano-composite synthesis: harnessing the potential of continuous flow scCO₂ reactor for sub-second synthesis of GO@HKUST-1</h3>
     <p class="authors"><b>M. M. Hossain</b>, C. Austin, I. V. Novosselov</p>
-    <p class="venue"><i>ChemRxiv</i>, 2026<span class="flag">Preprint</span></p>
+    <p class="venue"><i>ChemRxiv</i>, 2026<span class="flag">Preprint</span><span class="cites-tag" data-pub="go2026"></span></p>
     <p class="kp"><span><b>~650 ms</b> residence time</span><span><b>10 MPa</b> scCO₂</span><span><b>GO</b> graphene oxide filler</span></p>
     <p class="pub-links"><button class="textbtn" type="button" data-open>Summary &amp; figure</button><a href="https://doi.org/10.26434/chemrxiv.10001590/v1" target="_blank" rel="noopener">DOI ↗</a></p>
   </div>
@@ -395,7 +431,7 @@ footer a:hover{color:var(--accent)}
   <div>
     <h3>Continuous flow synthesis of MWCNT@HKUST-1 hybrid composites in scCO₂ environment: effects of injection temperature on morphology, crystallinity, and porosity</h3>
     <p class="authors"><b>M. M. Hossain</b>, C. Austin, I. V. Novosselov</p>
-    <p class="venue"><i>ChemRxiv</i>, 2026<span class="flag">Preprint</span></p>
+    <p class="venue"><i>ChemRxiv</i>, 2026<span class="flag">Preprint</span><span class="cites-tag" data-pub="cnt2026"></span></p>
     <p class="kp"><span><b>~650 ms</b> residence time</span><span><b>MWCNT</b> nanotube template</span><span><b>XRD · SEM · BET</b> characterization</span></p>
     <p class="pub-links"><button class="textbtn" type="button" data-open>Summary &amp; figure</button><a href="https://doi.org/10.26434/chemrxiv.10001591/v1" target="_blank" rel="noopener">DOI ↗</a></p>
   </div>
@@ -414,7 +450,7 @@ footer a:hover{color:var(--accent)}
   <div>
     <h3>Techno-economic and environment assessment of landfill and sewage treatment plant-based combined power generation system: a case study for Dhaka</h3>
     <p class="authors"><b>M. M. Hossain</b>, T. Shahriar, M. A. Habib, M. Hasanuzzaman, M. N. Inan</p>
-    <p class="venue"><i>Biomass Conversion and Biorefinery</i>, 2024 · Springer Nature · 14, 701–717 · online 2022</p>
+    <p class="venue"><i>Biomass Conversion and Biorefinery</i>, 2024 · Springer Nature · 14, 701–717 · online 2022<span class="cites-tag" data-pub="bcb2024">Cited by 8</span></p>
     <p class="kp"><span><b>21 MW</b> installed capacity</span><span><b>≈ 7,336</b> residents powered</span><span><b>3</b> scenarios compared</span></p>
     <p class="pub-links"><button class="textbtn" type="button" data-open>Summary &amp; figure</button><a href="https://doi.org/10.1007/s13399-022-02422-3" target="_blank" rel="noopener">DOI ↗</a></p>
   </div>
@@ -433,7 +469,7 @@ footer a:hover{color:var(--accent)}
   <div>
     <h3>Sub-second HKUST-1 synthesis in continuous flow supercritical CO₂ reactor</h3>
     <p class="authors"><b>M. M. Hossain</b>, C. Austin, I. V. Novosselov</p>
-    <p class="venue"><i>ChemRxiv</i>, 2023<span class="flag">Preprint</span></p>
+    <p class="venue"><i>ChemRxiv</i>, 2023<span class="flag">Preprint</span><span class="cites-tag" data-pub="hkust2023">Cited by 2</span></p>
     <p class="kp"><span><b>~650 ms</b> residence time</span><span><b>~1,550 m²/g</b> max BET area</span><span><b>10.55 Å</b> pore size</span></p>
     <p class="pub-links"><button class="textbtn" type="button" data-open>Abstract &amp; figure</button><a href="https://doi.org/10.26434/chemrxiv-2023-zxbfn" target="_blank" rel="noopener">DOI ↗</a></p>
   </div>
@@ -452,7 +488,7 @@ footer a:hover{color:var(--accent)}
   <div>
     <h3>Analysis and optimization of a modified Kalina cycle system for low-grade heat utilization</h3>
     <p class="authors"><b>M. M. Hossain</b>, N. A. Ahmed, M. A. Shahriyar, M. M. Ehsan, F. Riaz, S. Salehin, C. A. Salman</p>
-    <p class="venue"><i>Energy Conversion and Management: X</i>, 2021 · Elsevier · vol. 12, 100121<span class="flag">Open access</span></p>
+    <p class="venue"><i>Energy Conversion and Management: X</i>, 2021 · Elsevier · vol. 12, 100121<span class="flag">Open access</span><span class="cites-tag" data-pub="ecmx2021">Cited by 44</span></p>
     <p class="kp"><span><b>17 %</b> peak thermal efficiency</span><span><b>1,015 kW</b> net power</span><span><b>+6.35 %</b> vs. KCS-34</span></p>
     <p class="pub-links"><button class="textbtn" type="button" data-open>Abstract &amp; figure</button><a href="https://doi.org/10.1016/j.ecmx.2021.100121" target="_blank" rel="noopener">DOI ↗</a></p>
   </div>
@@ -471,7 +507,7 @@ footer a:hover{color:var(--accent)}
   <div>
     <h3>Numerical investigation of a modified Kalina cycle system for high-temperature application and genetic algorithm based optimization of the multi-phase expander&#x27;s inlet condition</h3>
     <p class="authors"><b>M. M. Hossain</b>, Md. S. Hossain, N. A. Ahmed, M. M. Ehsan</p>
-    <p class="venue"><i>Energy and AI</i>, 2021 · Elsevier · vol. 6, 100117<span class="flag">Open access</span></p>
+    <p class="venue"><i>Energy and AI</i>, 2021 · Elsevier · vol. 6, 100117<span class="flag">Open access</span><span class="cites-tag" data-pub="egyai2021">Cited by 56</span></p>
     <p class="kp"><span><b>500 °C</b> turbine inlet</span><span><b>+3.94 %</b> power &amp; efficiency (KC-12B)</span><span><b>+4.04 %</b> 2nd-law efficiency (KC-12B)</span></p>
     <p class="pub-links"><button class="textbtn" type="button" data-open>Abstract &amp; figure</button><a href="https://doi.org/10.1016/j.egyai.2021.100117" target="_blank" rel="noopener">DOI ↗</a></p>
   </div>
@@ -554,6 +590,32 @@ footer a:hover{color:var(--accent)}
     btns.forEach(x=>x.setAttribute('aria-pressed',String(x===b)));
     items.forEach(li=>li.hidden=!(b.dataset.f==='all'||li.dataset.cat===b.dataset.f));
   }));
+  /* citation tracker: numbers are baked in above, then refreshed from scholar.json
+     (rewritten weekly by .github/workflows/scholar.yml) */
+  const cp=document.getElementById('citations');
+  if(cp){
+    const fmt=n=>Number(n).toLocaleString('en-US');
+    const render=d=>{
+      cp.querySelectorAll('[data-k]').forEach(el=>{if(d[el.dataset.k]!=null) el.textContent=fmt(d[el.dataset.k]);});
+      const years=Object.keys(d.per_year||{}).sort();
+      if(years.length){
+        const max=Math.max(1,...years.map(y=>d.per_year[y])), last=years[years.length-1], top=years.find(y=>d.per_year[y]===max), now=String(new Date().getUTCFullYear());
+        const bars=cp.querySelector('.cbars');
+        bars.replaceChildren(...years.map(y=>{
+          const v=d.per_year[y], el=document.createElement('div');
+          el.className='cbar'+(y===last||y===top?' lbl':''); el.style.setProperty('--v',(v/max).toFixed(3));
+          el.innerHTML='<b></b><i></i><span></span>'; el.firstChild.textContent=fmt(v); el.lastChild.textContent=y; return el;
+        }));
+        bars.setAttribute('aria-label','Citations per year: '+years.map(y=>y+', '+fmt(d.per_year[y])+(y===now?' so far':'')).join('; ')+'.');
+      }
+      document.querySelectorAll('.cites-tag[data-pub]').forEach(t=>{const n=d.papers&&d.papers[t.dataset.pub]; t.textContent=n>0?'Cited by '+fmt(n):'';});
+      const t=cp.querySelector('time');
+      if(t&&d.updated){const dt=new Date(d.updated+'T00:00:00Z'); if(!isNaN(dt)){t.dateTime=d.updated; t.textContent=dt.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});}}
+    };
+    const baked=(cp.querySelector('time')||{}).dateTime||'';
+    const urls=['https://raw.githubusercontent.com/mohammad-masrur-hossain/mohammad-masrur-hossain.github.io/main/scholar.json','scholar.json'];
+    (async()=>{for(const u of urls){try{const r=await fetch(u,{cache:'no-cache'}); if(!r.ok) continue; const d=await r.json(); if(d&&typeof d.citations==='number'&&(!d.updated||d.updated>=baked)){render(d);return;}}catch(e){}}})();
+  }
   /* abstract + figure dialog */
   const dlg=document.getElementById('paper'); if(!dlg||!dlg.showModal) return;
   const body=dlg.querySelector('.dlg-body'), head=dlg.querySelector('.dlg-meta');
