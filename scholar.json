@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-19",
+  "updated": "2026-09-22",
   "source": "https://scholar.google.com/citations?user=sIqKWPgAAAAJ",
   "citations": 118,
   "citations_recent": 115,
@@ -18,7 +18,7 @@
     "egyai2021": 56,
     "ecmx2021": 44,
     "bcb2024": 8,
-    "wen2026": 3,
+    "wen2026": 8,
     "hkust2023": 2,
     "go2026": 0,
     "cnt2026": 0
@@ -35,19 +35,14 @@
       "year": 2021
     },
     {
+      "title": "Techno-Economic Assessment of Incineration-Based Waste-to-Energy Systems: Global Perspectives and a Case Study of Dhaka, Bangladesh",
+      "cites": 8,
+      "year": 2026
+    },
+    {
       "title": "Techno-economic and environment assessment of landfill and sewage treatment plant-based combined power generation system: a case study for Dhaka",
       "cites": 8,
       "year": 2024
-    },
-    {
-      "title": "Techno-economic Impact of Incineration-Based Waste to Energy Generation Technology in Bangladesh: A Short Review and A Case Study",
-      "cites": 5,
-      "year": 2025
-    },
-    {
-      "title": "Techno-Economic Assessment of Incineration-Based Waste-to-Energy Systems: Global Perspectives and a Case Study of Dhaka, Bangladesh",
-      "cites": 3,
-      "year": 2026
     },
     {
       "title": "Sub-second HKUST-1 Synthesis in Continuous Flow Supercritical CO2 Reactor",
@@ -73,11 +68,6 @@
       "title": "Techno-economic and Feasibility Analysis of a Thermo-chemical Waste to Energy Conversion Technology from the Perspective of Dhaka City, Bangladesh",
       "cites": 0,
       "year": 2021
-    },
-    {
-      "title": "Energy and AI",
-      "cites": 0,
-      "year": 0
     }
   ]
 }
