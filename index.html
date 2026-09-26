@@ -111,6 +111,10 @@ h3,h4{margin:0}
 .about p{max-width:44em}
 .about p+p{margin-top:10px}
 .about .lead{font-family:var(--serif);font-size:1.22rem;line-height:1.5;letter-spacing:-.005em}
+.about ul{margin:8px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:5px;max-width:44em}
+.about li{line-height:1.55}
+.about li::marker{color:var(--faint)}
+.about li b{font-weight:600}
 .focus{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:4px}
 .focus div{padding:12px 16px 0 0}
 .focus div+div{padding-left:14px;border-left:1px solid var(--rule)}
@@ -352,7 +356,7 @@ footer a:hover{color:var(--accent)}
    "url": "https://mohammad-masrur-hossain.github.io/",
    "name": "Mohammad Masrur Hossain – Metrology & Yield Engineer, Intel",
    "inLanguage": "en",
-   "dateModified": "2026-09-26T15:50:00-07:00",
+   "dateModified": "2026-09-26T16:06:00-07:00",
    "mainEntity": {
     "@id": "https://mohammad-masrur-hossain.github.io/#person"
    }
@@ -752,10 +756,20 @@ footer a:hover{color:var(--accent)}
     <nav class="jump" aria-label="Jump to section"><a href="#about">About</a><a href="#experience">Experience</a><a href="#publications">Publications</a><a href="#education">Education</a><a href="#credentials">Résumé</a><a href="#projects">Projects</a><a href="#skills">Skills</a></nav>
     <section id="about" class="about">
       <div class="sec-h"><h2>About</h2></div>
-      <p class="lead">I'm a metrology engineer in advanced packaging at Intel. I develop brightfield and darkfield inspection recipes that catch chipping, warpage and die-to-die misalignment on EMIB-T and hybrid bonding wafers before they cause yield loss. I also take new inspection tools from first-of-a-kind evaluation to stable high-volume production.</p>
-      <p>Day to day, that means proving out tool capability with DOE, SPC and FMEA; writing the specs and best-known methods that keep tools matched across sites; and partnering with OEM suppliers to maximize uptime in a 24/7 fab.</p>
-      <p>Before joining Intel, I earned my M.S. at the University of Washington, where I designed a continuous-flow supercritical-CO₂ reactor that synthesizes metal–organic frameworks (MOFs) and their graphene-oxide and carbon-nanotube composites in under a second. As an undergraduate at the Islamic University of Technology, I modeled Kalina power cycles and waste-to-energy plants, work that led to my first journal publications.</p>
-      <p>I'm now pursuing a Ph.D. in Industrial Engineering at the University of Tennessee, Knoxville, alongside my work at Intel. My research asks whether machine-learned design rules for CO₂-capturing MOFs reflect real adsorption physics or merely artifacts of how the training data were simulated.</p>
+      <p class="lead">I'm a metrology engineer in advanced packaging at Intel, where I:</p>
+      <ul>
+        <li>Develop brightfield and darkfield inspection recipes that catch chipping, warpage and die-to-die misalignment on EMIB-T and hybrid bonding wafers before they cause yield loss</li>
+        <li>Take new inspection tools from first-of-a-kind evaluation to stable high-volume production</li>
+        <li>Prove out tool capability with DOE, SPC and FMEA</li>
+        <li>Write the specs and best-known methods that keep tools matched across sites</li>
+        <li>Partner with OEM suppliers to maximize uptime in a 24/7 fab</li>
+      </ul>
+      <h3 class="sub-h">Research and education</h3>
+      <ul>
+        <li><b>Ph.D. in Industrial Engineering, University of Tennessee, Knoxville</b> (in progress): studying whether machine-learned design rules for CO₂-capturing metal–organic frameworks (MOFs) reflect real adsorption physics or merely artifacts of how the training data were simulated</li>
+        <li><b>M.S. in Mechanical Engineering, University of Washington:</b> designed a continuous-flow supercritical-CO₂ reactor that synthesizes MOFs and their graphene-oxide and carbon-nanotube composites in under a second</li>
+        <li><b>B.Sc. in Mechanical Engineering, Islamic University of Technology:</b> modeled Kalina power cycles and waste-to-energy plants, work that led to my first journal publications</li>
+      </ul>
       <div class="facts" role="list">
         <div role="listitem"><b>3.5 yrs</b><span>at Intel</span></div>
         <div role="listitem"><b>5+ yrs</b><span>cleanroom &amp; lab work</span></div>
