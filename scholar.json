@@ -1,25 +1,26 @@
 {
-  "updated": "2026-09-22",
+  "updated": "2026-10-06",
   "source": "https://scholar.google.com/citations?user=sIqKWPgAAAAJ",
-  "citations": 118,
-  "citations_recent": 115,
+  "citations": 120,
+  "citations_recent": 117,
   "h_index": 4,
   "h_index_recent": 4,
-  "i10_index": 2,
-  "i10_index_recent": 2,
+  "i10_index": 3,
+  "i10_index_recent": 3,
   "per_year": {
     "2022": 3,
     "2023": 15,
     "2024": 24,
     "2025": 44,
-    "2026": 26
+    "2026": 27
   },
   "papers": {
     "egyai2021": 56,
     "ecmx2021": 44,
+    "wen2026": 10,
     "bcb2024": 8,
-    "wen2026": 8,
     "hkust2023": 2,
+    "kalina2026": 0,
     "go2026": 0,
     "cnt2026": 0
   },
@@ -36,7 +37,7 @@
     },
     {
       "title": "Techno-Economic Assessment of Incineration-Based Waste-to-Energy Systems: Global Perspectives and a Case Study of Dhaka, Bangladesh",
-      "cites": 8,
+      "cites": 10,
       "year": 2026
     },
     {
@@ -48,6 +49,11 @@
       "title": "Sub-second HKUST-1 Synthesis in Continuous Flow Supercritical CO2 Reactor",
       "cites": 2,
       "year": 2023
+    },
+    {
+      "title": "Critical assessment of published Kalina cycle studies: cycle configuration, state-point reporting and optimisation bounds",
+      "cites": 0,
+      "year": 2026
     },
     {
       "title": "Nano-Composite Synthesis: Harnessing the Potential of Continuous Flow scCO2 Reactor for Sub-Second synthesis of GO@ HKUST-1",
