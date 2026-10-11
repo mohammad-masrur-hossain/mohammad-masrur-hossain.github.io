@@ -1,8 +1,8 @@
 {
-  "updated": "2026-10-06",
+  "updated": "2026-10-11",
   "source": "https://scholar.google.com/citations?user=sIqKWPgAAAAJ",
-  "citations": 120,
-  "citations_recent": 117,
+  "citations": 121,
+  "citations_recent": 118,
   "h_index": 4,
   "h_index_recent": 4,
   "i10_index": 3,
@@ -11,15 +11,16 @@
     "2022": 3,
     "2023": 15,
     "2024": 24,
-    "2025": 44,
+    "2025": 45,
     "2026": 27
   },
   "papers": {
     "egyai2021": 56,
-    "ecmx2021": 44,
+    "ecmx2021": 45,
     "wen2026": 10,
     "bcb2024": 8,
     "hkust2023": 2,
+    "review2026": 0,
     "kalina2026": 0,
     "go2026": 0,
     "cnt2026": 0
@@ -32,7 +33,7 @@
     },
     {
       "title": "Analysis and optimization of a modified Kalina cycle system for low-grade heat utilization",
-      "cites": 44,
+      "cites": 45,
       "year": 2021
     },
     {
@@ -74,6 +75,11 @@
       "title": "Techno-economic and Feasibility Analysis of a Thermo-chemical Waste to Energy Conversion Technology from the Perspective of Dhaka City, Bangladesh",
       "cites": 0,
       "year": 2021
+    },
+    {
+      "title": "Variation-Aware Thermal Design for Advanced Packaging: A Systematic Review",
+      "cites": 0,
+      "year": 0
     }
   ]
 }
