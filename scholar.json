@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-11",
+  "updated": "2026-10-12",
   "source": "https://scholar.google.com/citations?user=sIqKWPgAAAAJ",
   "citations": 121,
   "citations_recent": 118,
@@ -17,11 +17,9 @@
   "papers": {
     "egyai2021": 56,
     "ecmx2021": 45,
-    "wen2026": 10,
     "bcb2024": 8,
+    "wen2026": 10,
     "hkust2023": 2,
-    "review2026": 0,
-    "kalina2026": 0,
     "go2026": 0,
     "cnt2026": 0
   },
@@ -57,12 +55,12 @@
       "year": 2026
     },
     {
-      "title": "Nano-Composite Synthesis: Harnessing the Potential of Continuous Flow scCO2 Reactor for Sub-Second synthesis of GO@ HKUST-1",
+      "title": "Nano-Composite Synthesis: Harnessing the Potential of Continuous Flow scCO2 Reactor for Sub-Second synthesis of GO@HKUST-1",
       "cites": 0,
       "year": 2026
     },
     {
-      "title": "Continuous Flow Synthesis of MWCNT@ HKUST-1 Hybrid Composites in scCO2 Environment: Effects of Injection Temperature on Morphology, Crystallinity, and Porosity",
+      "title": "Continuous Flow Synthesis of MWCNT@HKUST-1 Hybrid Composites in scCO2 Environment: Effects of Injection Temperature on Morphology, Crystallinity, and Porosity",
       "cites": 0,
       "year": 2026
     },
